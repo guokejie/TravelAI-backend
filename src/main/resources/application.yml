@@ -1,0 +1,51 @@
+# 服务器配置
+server:
+  port: 8080
+spring:
+  application:
+    name: ai-travel-planner
+  # 数据源配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/ai_travel_planner?useUnicode=true&characterEncoding=utf8&serverTimezone=Asia/Shanghai&useSSL=false&allowPublicKeyRetrieval=true
+    username: root
+    password: 12345678
+
+# MyBatis-Plus 配置
+mybatis-plus:
+  # Mapper XML 文件位置
+  mapper-locations: classpath*:/mapper/**/*.xml
+  # 实体类包路径
+  type-aliases-package: org.tech.*.entity
+  configuration:
+    # 驼峰转下划线
+    map-underscore-to-camel-case: true
+    # 日志输出
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl
+  global-config:
+    db-config:
+      # 主键类型（雪花算法）
+      id-type: assign_id
+      # 逻辑删除字段
+      logic-delete-field: deleted
+      logic-delete-value: 1
+      logic-not-delete-value: 0
+
+
+
+# 日志配置
+logging:
+  level:
+    org.tech: debug
+    org.tech.*.mapper: debug
+
+# JWT 配置
+jwt:
+  # Token 过期时间（7天）
+  expiration: 604800000
+  # JWT 密钥
+  secret: ai-travel-planner-secret-key-2024
+  # Token 前缀
+  token-prefix: "Bearer "
+  # Token 请求头名称
+  token-header: "Authorization"
