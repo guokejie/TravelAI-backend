@@ -1,4 +1,4 @@
-# AI Travel Planner
+# TravelAI
 
 一个基于 AI 的智能旅行规划应用，帮助用户轻松制定个性化的旅行计划。
 
